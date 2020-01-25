@@ -23,11 +23,17 @@ public class Cipher {
         int i = 0;
         while (i < ALPHABET.length) {
             if (ALPHABET[i].equalsIgnoreCase(letter)) {
-                try {
+                /*try {
                     return ALPHABET[i + step];
                 } catch (ArrayIndexOutOfBoundsException e) {
                     int howCloseToTheEnd = ALPHABET.length - i;
                     return ALPHABET[step - howCloseToTheEnd];
+                }*/
+                if (i + step >= ALPHABET.length) {
+                    int howCloseToTheEnd = ALPHABET.length - i;
+                    return ALPHABET[step - howCloseToTheEnd];
+                } else {
+                    return ALPHABET[i+step];
                 }
             } else {
                 i++;
@@ -40,11 +46,17 @@ public class Cipher {
         int i = 0;
         while (i < ALPHABET.length) {
             if (ALPHABET[i].equalsIgnoreCase(letter)) {
-                try {
+                /*try {
                     return ALPHABET[i - step];
                 } catch (ArrayIndexOutOfBoundsException e) {
                     int howCloseToTheBeginning = i - step;
                     return ALPHABET[ALPHABET.length + howCloseToTheBeginning];
+                }*/
+                if (i - step < 0) {
+                    int howCloseToTheBeginning = i - step;
+                    return ALPHABET[ALPHABET.length + howCloseToTheBeginning];
+                } else {
+                    return ALPHABET[i - step];
                 }
             } else {
                 i++;
